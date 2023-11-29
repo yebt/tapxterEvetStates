@@ -145,7 +145,7 @@ onMounted(async () => {
             <p class="font-normal text-gray-700 dark:text-gray-400 flex text-xl">
               Persosnas validadas
             </p>
-            <div role="status">
+            <div role="status" class="flex items-center justify-center m-2">
               <svg aria-hidden="true" v-if="firstLoad"
                 class="inline w-20 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
