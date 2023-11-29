@@ -40,18 +40,6 @@ const loadDataFromLocalStorage = () => {
   infoData.value = JSON.parse(localStorage.getItem('infoData'))
 }
 
-const trateData = async () => {
-  lastUpdate.value = new Date().toLocaleString()
-  const data = await getData()
-  userData.value = data
-  const infData = await procesarDatos(data.data)
-  infoData.value = infData
-  arrayReport.value = Object.keys(infData.groupeds)
-  totalPersons.value = infData.total
-  totalVerified.value = infData.verified
-  console.log(infData)
-}
-
 function procesarDatos (data) {
   // Inicializar contadores
   const total = data.length
@@ -101,6 +89,18 @@ function procesarDatos (data) {
   }
 
   return resultado
+}
+
+const trateData = async () => {
+  lastUpdate.value = new Date().toLocaleString()
+  const data = await getData()
+  userData.value = data
+  const infData = await procesarDatos(data.data)
+  infoData.value = infData
+  arrayReport.value = Object.keys(infData.groupeds)
+  totalPersons.value = infData.total
+  totalVerified.value = infData.verified
+  // console.log(infData)
 }
 
 onMounted(async () => {
