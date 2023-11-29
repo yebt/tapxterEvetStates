@@ -1,0 +1,38 @@
+<script setup>
+// import HelloWorld from './components/HelloWorld.vue'
+</script>
+
+<template>
+  <header class="md:px-4 fixed top-0 bg-base-100 w-full">
+    <nav class="navbar ">
+      <div class="navbar-start">
+        <a target="_blank" href="https://app.tapxter.com/" class="btn btn-ghost text-xl w-32 rounded ">
+          <img class="object-cover max-w-full max-h-full" src="./assets/images/logo-tapxter.svg" alt="">
+        </a>
+      </div>
+      <div class="navbar-end">
+        <img class="w-32" src="./assets/images/logo-uni.svg" alt="">
+      </div>
+    </nav>
+  </header>
+  <main class="hero min-h-screen bg-base-200">
+
+  </main>
+  <footer>
+  </footer>
+</template>
+
+<style scoped>
+/* .logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+} */
+</style>
