@@ -28,17 +28,17 @@ const getData = async () => {
   return data
 }
 
-const saveDataInLocalStorage = () => {
-  localStorage.setItem('lastUpdate', lastUpdate.value)
-  localStorage.setItem('userData', JSON.stringify(userData.value))
-  localStorage.setItem('infoData', JSON.stringify(infoData.value))
-}
+// const saveDataInLocalStorage = () => {
+//   localStorage.setItem('lastUpdate', lastUpdate.value)
+//   localStorage.setItem('userData', JSON.stringify(userData.value))
+//   localStorage.setItem('infoData', JSON.stringify(infoData.value))
+// }
 
-const loadDataFromLocalStorage = () => {
-  lastUpdate.value = localStorage.getItem('lastUpdate')
-  userData.value = JSON.parse(localStorage.getItem('userData'))
-  infoData.value = JSON.parse(localStorage.getItem('infoData'))
-}
+// const loadDataFromLocalStorage = () => {
+//   lastUpdate.value = localStorage.getItem('lastUpdate')
+//   userData.value = JSON.parse(localStorage.getItem('userData'))
+//   infoData.value = JSON.parse(localStorage.getItem('infoData'))
+// }
 
 function procesarDatos (data) {
   // Inicializar contadores
