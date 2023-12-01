@@ -8,6 +8,7 @@ import { onMounted, ref } from 'vue'
 const lastUpdate = ref('')
 const userData = []
 const infoData = {}
+const appTheme = ref('light')
 //
 const arrayReport = ref([])
 const totalPersons = ref(0)
@@ -44,6 +45,23 @@ const getData = async () => {
 //   userData.value = JSON.parse(localStorage.getItem('userData'))
 //   infoData.value = JSON.parse(localStorage.getItem('infoData'))
 // }
+
+const themer = () => {
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+  console.log('theme', localStorage.theme)
+}
+
+const toggleDarkMode = () => {
+  localStorage.theme = (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? 'light' : 'dark'
+  themer()
+  appTheme.value = localStorage.theme
+  document.documentElement.setAttribute('data-theme', localStorage.theme)
+}
 
 function procesarDatos (data) {
   // Inicializar contadores
@@ -109,6 +127,7 @@ const trateData = async () => {
 }
 
 onMounted(async () => {
+  themer()
   firstLoad.value = true
   await trateData()
   firstLoad.value = false
@@ -118,17 +137,35 @@ onMounted(async () => {
 </script>
 
 <template>
-  <main class="main-container overflow-hidden">
+  <main class="main-container overflow-hidden max-md:px-10">
     <div class="edges">
-      <p class="baddger">
-        Última actualización:&nbsp;<code class="font-mono font-bold">{{ lastUpdate }}</code>
-      </p>
+      <div class="baddger max-md:py-4 items-center">
+        <p class="flex max-md:flex-col max-md:items-center max-md:text-center">Última actualización:&nbsp;<code
+            class="font-mono font-bold">{{ lastUpdate }}</code></p>
+      </div>
+      <a href="#" @click.prevent="toggleDarkMode" class="button-card mx-2 px-3 py-2 ">
+
+        <svg v-if="appTheme === 'dark'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        </svg>
+
+        <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+        </svg>
+
+      </a>
+
       <div class="logo-container items-center lg:relative lg:p-2">
         <div
           class="max-lg:hidden absolute  inset-0 bg-gradient-to-l from-martinique-500/20  from-1%  to-transparent to-90%  w-[200%]">
         </div>
         <img alt="Uni Logo" fetchpriority="high" width="180" height="24" decoding="async" data-nimg="1" class="mx-4 "
           style="" src="./assets/images/logo-uni.svg" />
+
         <a class="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
           href="https://app.tapxter.com" target="_blank" rel="noopener noreferrer">
           By
@@ -163,8 +200,11 @@ onMounted(async () => {
               </svg>
               <span class="sr-only">Loading...</span>
             </div>
-            <h2 v-if="!firstLoad" class="mb-2 text-8xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {{ totalVerified }}<span>-></span></h2>
+            <h2 v-if="!firstLoad"
+              class="mb-2 text-8xl font-bold tracking-tight text-gray-900 dark:text-white flex flex-wrap text-center">
+              <span>{{ totalVerified }}</span>
+              <span>-></span>
+            </h2>
             <p class="font-normal text-gray-700 dark:text-gray-400 flex text-xl">
               <span class="flex-1"> Personas invitadas </span> <code class="font-mono">{{ totalPersons }}</code>
             </p>

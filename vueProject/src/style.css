@@ -6,16 +6,31 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  font-feature-settings: 'liga' 1, 'calt' 1;
+  --svg-color-black: #222222;
+  --svg-color-gray: white;
+  --svg-color-white: #515252;
+
+  font-feature-settings: "liga" 1, "calt" 1;
 }
 
+/* [data-theme="dark"] { */
+[data-theme="dark"] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --svg-color-black: #FEFEFE;
+  --svg-color-gray: #232323;
+  --svg-color-white: #C1C2C2;
+}
+
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 @supports (font-variation-settings: normal) {
   :root {
@@ -23,15 +38,15 @@
   }
 }
 
-
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
 
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
-
 
 /* The base layer is for things like reset rules or default styles applied to plain HTML elements. */
 @layer base {}
@@ -39,31 +54,31 @@ body {
 /* The components layer is for class-based styles that you want to be able to override with utilities. */
 @layer components {
   .main-container {
-    @apply flex min-h-screen flex-col items-center justify-between p-20
+    @apply flex min-h-screen flex-col items-center justify-between p-20;
   }
 
   .edges {
-    @apply z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex
+    @apply z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex;
   }
 
   .baddger {
-    @apply fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30
+    @apply fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30;
   }
 
   .logo-container {
-    @apply fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none
+    @apply fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none;
   }
 
   .backgrower {
-    @apply relative flex place-items-center before:absolute before:h-[300px] before:w-[680px] before:-translate-x-1/2 before:rounded-full before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[440px] after:translate-x-1/3 after:bg-gradient-conic after:from-martinique-200 after:via-victoria-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-purple-700 before:dark:opacity-10 after:dark:from-martinique-900 after:dark:via-victoria-600 after:dark:opacity-40 before:lg:h-[360px] z-[-1]
+    @apply relative flex place-items-center before:absolute before:h-[300px] before:w-[680px] before:-translate-x-1/2 before:rounded-full before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[440px] after:translate-x-1/3 after:bg-gradient-conic after:from-martinique-200 after:via-victoria-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-purple-700 before:dark:opacity-10 after:dark:from-martinique-900 after:dark:via-victoria-600 after:dark:opacity-40 before:lg:h-[360px] z-[-1];
   }
 
   .button-card {
-    @apply rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30
+    @apply rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30;
   }
 
   .simple-card-border {
-    @apply rounded-lg border border-transparent px-5 py-4 transition-colors border-gray-300 bg-gray-100 dark:border-neutral-700 dark:bg-neutral-800/30
+    @apply rounded-lg border border-transparent px-5 py-4 transition-colors border-gray-300 bg-gray-100 dark:border-neutral-700 dark:bg-neutral-800/30;
   }
 }
 
