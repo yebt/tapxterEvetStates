@@ -7,8 +7,8 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --svg-color-black: #222222;
-  --svg-color-gray: white;
-  --svg-color-white: #515252;
+  --svg-color-gray: #232323;
+  --svg-color-white: #424242;
 
   font-feature-settings: "liga" 1, "calt" 1;
 }
@@ -19,7 +19,7 @@
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
   --svg-color-black: #FEFEFE;
-  --svg-color-gray: #232323;
+  --svg-color-gray:  white;
   --svg-color-white: #C1C2C2;
 }
 
@@ -54,11 +54,11 @@ body {
 /* The components layer is for class-based styles that you want to be able to override with utilities. */
 @layer components {
   .main-container {
-    @apply flex min-h-screen flex-col items-center justify-between p-20;
+    @apply flex min-h-screen flex-col items-center justify-between p-20 ;
   }
 
   .edges {
-    @apply z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex;
+    @apply z-10 max-w-5xl 2xl:max-w-full w-full items-center justify-between font-mono text-sm lg:flex;
   }
 
   .baddger {
